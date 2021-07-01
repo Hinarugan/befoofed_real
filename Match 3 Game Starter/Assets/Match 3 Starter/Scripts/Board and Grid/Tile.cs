@@ -24,11 +24,11 @@ public class Tile : MonoBehaviour {
 
 	private void Deselect()
 	{
+
 		isSelected = false;
 		render.color = Color.white;
 		previousSelected = null;
 	}
-
 	void OnMouseDown()
 	{
 		if (render.sprite == null || BoardManager.instance.IsShifting)
@@ -52,4 +52,6 @@ public class Tile : MonoBehaviour {
 			}
 		}
 	}
+
+
 }
