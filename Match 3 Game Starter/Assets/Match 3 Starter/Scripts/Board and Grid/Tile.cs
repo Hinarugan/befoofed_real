@@ -48,8 +48,22 @@ public class Tile : MonoBehaviour {
 			}
 			else
 			{
+				SwapSprite(previousSelected.render);
 				previousSelected.Deselect(); 
 			}
 		}
 	}
+	public void SwapSprite(SpriteRenderer render2)
+	{ 
+		if (render.sprite == render2.sprite)
+		{
+			return;
+		}
+
+		Sprite tempSprite = render2.sprite; 
+		render2.sprite = render.sprite;
+		render.sprite = tempSprite; 
+		SFXManager.instance.PlaySFX(Clip.Swap);
+	}
+
 }
