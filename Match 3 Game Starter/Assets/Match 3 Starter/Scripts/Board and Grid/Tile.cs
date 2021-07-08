@@ -9,7 +9,7 @@ public class Tile : MonoBehaviour {
 	private SpriteRenderer render;
 	private bool isSelected = false;
 
-	private Vector2[] adjacentDirections = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
+
 
 	void Awake() {
 		render = GetComponent<SpriteRenderer>();
