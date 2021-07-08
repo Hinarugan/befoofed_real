@@ -19,7 +19,7 @@ public class Tile : MonoBehaviour {
 		isSelected = true;
 		render.color = selectedColor;
 		previousSelected = gameObject.GetComponent<Tile>();
-		SFXManager.instance.PlaySFX(Clip.Select);
+		
 	}
 
 	private void Deselect()
@@ -31,10 +31,6 @@ public class Tile : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		if (render.sprite == null || BoardManager.instance.IsShifting)
-		{
-			return;
-		}
 
 		if (isSelected)
 		{ 
@@ -54,16 +50,11 @@ public class Tile : MonoBehaviour {
 		}
 	}
 	public void SwapSprite(SpriteRenderer render2)
-	{ 
-		if (render.sprite == render2.sprite)
-		{
-			return;
-		}
-
+	{
 		Sprite tempSprite = render2.sprite; 
 		render2.sprite = render.sprite;
 		render.sprite = tempSprite; 
-		SFXManager.instance.PlaySFX(Clip.Swap);
+		
 	}
 
 }
