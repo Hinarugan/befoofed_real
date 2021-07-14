@@ -48,6 +48,23 @@ public class BoardManager : MonoBehaviour
 			}
         }
     }
+
+	public IEnumerator FindNullTiles()//Diese Methode geht über das Gesamte Board und sucht Tiles, die mit Null Object zugewiesen sind. Wenn so ein Tile gefunden wurde
+									  //startet es die ShiftTilesDown-Coroutine
+	{
+		for (int x = 0; x < xSize; x++)
+		{
+			for (int y = 0; y < ySize; y++)
+			{
+				if (tiles[x, y].GetComponent<SpriteRenderer>().sprite == null)
+				{
+					yield return StartCoroutine(ShiftTilesDown(x, y));
+					break;
+				}
+			}
+		}
+	}
+
 	private Sprite GetNewSprite(int x, int y)
 	{
 		List<Sprite> possibleCharacters = new List<Sprite>();
@@ -67,22 +84,6 @@ public class BoardManager : MonoBehaviour
 		}
 
 		return possibleCharacters[Random.Range(0, possibleCharacters.Count)];
-	}
-
-	public IEnumerator FindNullTiles()//Diese Methode geht über das Gesamte Board und sucht Tiles, die mit Null Object zugewiesen sind. Wenn so ein Tile gefunden wurde
-		//startet es die ShiftTilesDown-Coroutine
-	{
-		for(int x = 0; x < xSize; x++)
-		{
-			for(int y = 0; y < ySize; y++)
-			{
-				if(tiles[x,y].GetComponent<SpriteRenderer>().sprite = null)
-				{
-					yield return StartCoroutine(ShiftTilesDown(x, y));
-					break;
-				}
-			}
-		}
 	}
 
 	private IEnumerator ShiftTilesDown(int x, int yStart, float shiftDelay = .03f)
