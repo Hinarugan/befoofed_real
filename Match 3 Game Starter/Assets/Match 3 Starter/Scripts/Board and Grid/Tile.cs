@@ -55,6 +55,7 @@ public class Tile : MonoBehaviour
 					previousSelected.ClearAllMatches();
 					previousSelected.Deselect();//Tauscht die ausgewählte Sprites miteinander.
 					ClearAllMatches();
+					GUIManager.instance.MoveCounter--;
 				}
 				else
 				{
